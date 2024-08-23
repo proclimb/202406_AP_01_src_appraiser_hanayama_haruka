@@ -218,7 +218,7 @@ function subStockEditView($param)
 
   <h1>仕入<?php print $param["purpose"] ?></h1>
 
-  <form name="form" id="form" action="index.php" method="get">
+  <form name="form" id="form" action="index.php" method="post">
     <input type="hidden" name="act" />
     <input type="hidden" name="sDel" value="<?php print $param["sDel"] ?>" />
     <input type="hidden" name="sInsDTFrom" value="<?php print $param["sInsDTFrom"] ?>" />
@@ -332,7 +332,7 @@ function subStockEditView($param)
           for ($i = 0; $i < 6; $i++) {
           ?>
             <br />
-            <input type="radio" name="how" value="<?php print $i + 1; ?>" <?php if ($param["how"] == $i + 1) print ' checked="checked"'; ?> /> <?php print fnHowName($i); ?>
+            <input type="radio" name="how" value="<?php print $i + 1; ?>" <?php if ($param["how"] == $i) print ' checked="checked"'; ?> /> <?php print fnHowName($i); ?>
           <?php
           }
           ?>
