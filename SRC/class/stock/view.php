@@ -60,7 +60,7 @@ function subStockView($param)
           <th>ランク</th>
           <td>
             <?php
-            for ($i = 0; $i < 4; $i++) {
+            for ($i = 0; $i < 5; $i++) {
             ?>
               <input type="checkbox" name="sRank[]" value="<?php print $i + 1; ?>" <?php for ($j = 0; $j < 4; $j++) {
                                                                                       if ($param["sRank"][$j] == $i + 1) print ' checked="checked"';
@@ -245,8 +245,9 @@ function subStockEditView($param)
     <table border="0" cellpadding="5" cellspacing="1">
       <tr>
         <th>除外</th>
-        <input type="radio" name="del" value="1" checked /> 非除外
-        <input type="radio" name="del" value="0" /> 除外
+        <td>
+          <input type="radio" name="del" value="1" checked /> 非除外
+          <input type="radio" name="del" value="0" /> 除外
         </td>
       </tr>
       <tr>
