@@ -8,7 +8,6 @@ function fnStockEditCheck() {
     return;
   }
 
-  tmp = form.article.value;
   if (tmp.length == 0) {
     alert('物件名を入力してください');
     return;
