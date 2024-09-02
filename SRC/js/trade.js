@@ -32,7 +32,7 @@ function fnTradeEditCheck() {
   }
 
   tmp = form.zip.value;
-  if (tmp.length > 0 && !tmp.match(/^\d{3}(\s*|-)\d{4}$/)) {
+  if (tmp.length > 0 && !tmp.match(/^\d{3}-*\d{4}$/)) {
     alert("正しい郵便番号(***-**** 又は ******* )で\n入力してください");
     return;
   }
@@ -84,6 +84,7 @@ function fnTradeEditCheck() {
 function fnTradeDeleteCheck(no) {
   if (confirm('削除します。よろしいですか？')) {
     form.tradeNo.value = no;
+    form.act.value = 'tradeDelete';
     form.submit();
   }
 }
