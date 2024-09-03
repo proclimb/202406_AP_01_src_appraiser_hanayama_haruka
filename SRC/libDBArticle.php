@@ -10,7 +10,6 @@ function fnSqlArticleList($flg, $sDel, $sArticle, $sRoom, $sKeyPlace, $sArticleN
       break;
     case 1:
       $sql  = "SELECT ARTICLENO, ARTICLE, RO0M, KEYPLACE, ARTICLENOTE, KEYBOX, DRAWING, SELLCHARGE";
-      break;
   }
   $sql .= " FROM TBLARTICLE";
   $sql .= " WHERE DEL = $sDel";
@@ -38,9 +37,8 @@ function fnSqlArticleList($flg, $sDel, $sArticle, $sRoom, $sKeyPlace, $sArticleN
   if ($orderBy) {
     $sql .= " ORDER BY $orderBy $orderTo";
   }
-  if ($flg) {
-    $sql .= " LIMIT " . (($sPage + 1) * PAGE_MAX) . ", " . PAGE_MAX;
-  }
+  $res = mysql_query($sql);
+  $row = mysql_fetch_array($res);
 
   return ($sql);
 }
