@@ -11,6 +11,7 @@ function fnSqlArticleList($flg, $sDel, $sArticle, $sRoom, $sKeyPlace, $sArticleN
     case 1:
       $sql  = "SELECT ARTICLENO, ARTICLE, ROOM, KEYPLACE, ARTICLENOTE, KEYBOX, DRAWING, SELLCHARGE";
   }
+
   $sql .= " FROM TBLARTICLE";
   $sql .= " WHERE DEL = $sDel";
   if ($sArticle) {
@@ -75,7 +76,7 @@ function fnSqlArticleUpdate($articleNo, $article, $room, $keyPlace, $address, $a
   $sql .= " SET ARTICLE = '$article'";
   $sql .= ",ROOM = '$room'";
   $sql .= ",KEYPLACE = '$keyPlace'";
-  $sql .= ",ADDRESS = '$address";
+  $sql .= ",ADDRESS = '$address'";
   $sql .= ",ARTICLENOTE = '$articleNote'";
   $sql .= ",KEYBOX = '$keyBox'";
   $sql .= ",DRAWING = '$drawing'";
