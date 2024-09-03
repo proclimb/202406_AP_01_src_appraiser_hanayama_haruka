@@ -46,8 +46,9 @@ function fnSqlArticleList($flg, $sDel, $sArticle, $sRoom, $sKeyPlace, $sArticleN
   if ($orderBy) {
     $sql .= " ORDER BY $orderBy $orderTo";
   }
-  $res = mysql_query($sql);
-  $row = mysql_fetch_array($res);
+  if ($flg) {
+    $sql .= " LIMIT " . (($sPage - 1) * PAGE_MAX) . ", " . PAGE_MAX;
+  }
 
   return ($sql);
 }
