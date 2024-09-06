@@ -7,9 +7,8 @@
 function fnYMDCheck(msg, obj) {
   // 未入力時はチェックしない
   oYMD = obj.value;
-  if (!oYMD) {
-    return true;
-  }
+  if (!oYMD) { return true; }
+
   var tmp = oYMD.split('/');
   var ymd = new Date(tmp[0], parseInt(tmp[1], 10) - 1, parseInt(tmp[2], 10));
   var vYMD = ymd.getFullYear() + '/' + ('0' + (ymd.getMonth() + 1)).slice(-2) + '/' + ('0' + ymd.getDate()).slice(-2);
@@ -20,7 +19,6 @@ function fnYMDCheck(msg, obj) {
     return false;
   }
 }
-
 
 /**
  * 入力桁数チェック
@@ -34,11 +32,9 @@ function isLength(length, msg, obj) {
   rtn = false;
   if (obj.value.length > length) {
     alert(msg + "は" + length + "文字以内で入力して下さい");
-    rtn = true;
   }
   return rtn;
 }
-
 
 
 /**
