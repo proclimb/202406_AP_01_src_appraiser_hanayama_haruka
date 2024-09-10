@@ -3,15 +3,17 @@
 //
 // ログイン
 //
-function fnSqlLogin($id)
+function fnSqlLogin($id, $pw)
 {
   $id = addslashes($id);
-  $sql = "SELECT USERNO,AUTHORITY,PASSWORD FROM TBLUSER";
+  $sql = "SELECT USERNO,AUTHORITY FROM TBLUSER";
   $sql .= " WHERE DEL = 1";
   $sql .= " AND ID = '$id'";
+  $sql .= " AND PASSWORD = '$pw'";
 
   return ($sql);
 }
+
 //
 // ユーザー情報リスト
 //
@@ -40,27 +42,24 @@ function fnSqlAdminUserEdit($userNo)
 //
 function fnSqlAdminUserUpdate($userNo, $name, $id, $password, $authority)
 {
-  if ($password !== "") {
-    $pass = password_hash($password, PASSWORD_DEFAULT);
-  }
+  $pass = addslashes(hash('adler32', $password));
   $sql = "UPDATE TBLUSER";
   $sql .= " SET NAME = '$name'";
   $sql .= ",ID = '$id'";
-  if ($password !== "") {
-    $sql .= ",PASSWORD = '$pass'";
-  }
+  $sql .= ",PASSWORD = '$pass'";
   $sql .= ",AUTHORITY = '$authority'";
   $sql .= ",UPDT = CURRENT_TIMESTAMP";
   $sql .= " WHERE USERNO = '$userNo'";
 
   return ($sql);
 }
+
 //
 // ユーザー情報登録
 //
 function fnSqlAdminUserInsert($userNo, $name, $id, $password, $authority)
 {
-  $pass = password_hash($password, PASSWORD_DEFAULT);
+  $pass = addslashes(hash('adler32', $password));
   $sql = "INSERT INTO TBLUSER(";
   $sql .= "USERNO,NAME,ID,PASSWORD,AUTHORITY,INSDT,UPDT,DEL";
   $sql .= ")VALUES(";
@@ -93,7 +92,7 @@ function fnNextNo($t)
   $res = mysqli_query($conn, $sql);
   $row = mysqli_fetch_array($res);
   if ($row[0]) {
-    $max = $row[0] + 1;
+    $max = $row[0];
   } else {
     $max = 1;
   }
