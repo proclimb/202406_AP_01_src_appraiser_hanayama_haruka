@@ -37,11 +37,6 @@ function fnAdminUserEditCheck() {
     form.act.value = 'adminUserEditComplete';
     form.submit();
   }
-
-  if (confirm('この内容で登録します。よろしいですか？')) {
-    form.act.value = 'adminUserEditComplete';
-    form.submit();
-  }
 }
 
 
